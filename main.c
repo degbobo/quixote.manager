@@ -144,6 +144,7 @@ int main(int argc, char * argv[]) {
 	else if(argc == 2) { //if "quixote arg1"
 		if (string_eqv(argv[1], CLEAN_KEYWORD) == 1) {
 			// THEN DELETE THE FILE
+			remove(FILE_PATH);   // allegedlly the syntax to delete a file
 			return 0;
 		}
 		// then we search quixote_logs using file_search_name, under name: arg1
