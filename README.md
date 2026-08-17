@@ -1,4 +1,4 @@
-## Don Quixote <br> A simple Project Directory Manager
+## Don Quixote - A simple Project Directory Manager
 Project Pointer
 <br>Directory Pointer
 <br>Project Directory Manager
@@ -17,3 +17,10 @@ Terminals always open a few folders away from your projects.
 ## Why Name it "Don Quixote"?
 I'm a fan of the book, it's a lot of fun!
 <br>It's nice for projects to have names.
+
+## Functions
+'quixote'                         -> calls on the program. displays every project in quixote's memory. press q to quit, or teleport to a directory by entering it's number.<br>
+'quixote summon [project_name]'   -> adds a new project to quixote's memory. it's recorded under a name and as the order of its entry<br>
+'quixote peek'                    -> only prints out all of the saved directories/projects<br>
+'quixote clean'                   -> clears the project/directory log<br>
+'quixote [project_name]'          -> if you know which project/directory you want specifically, just type it's name and quixote will take you there
