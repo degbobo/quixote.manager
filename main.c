@@ -125,6 +125,44 @@ int QUIXOTE_METHOD(char * directory) {
 	return 0;
 }
 
-int main(void) {
+int main(int argc, char * argv[]) {
+	char current_dir[1024];
+	if (_getcwd(current_dir, sizeof(current_dir)) == NULL) return 0;
+	
+	if (argc == 3) { // if "quixote arg1 arg2"
+		if (string_eqv(argv[1], WRITE_KEYWORD) == 1) { // if program is called with the correct keyword!
+			file_write(argv[2], current_dir); // writes "project_name;C:\current\directory" to quixote_log
+			printf("... and Don Quixote imagined...\n");
+		}
+		else {
+			printf("No such keyword \"%s\"\n", argv[1]);
+			return 0;
+		}
+	}
+	else if(argc == 2) { //if "quixote arg1"
+		// then we search quixote_logs using file_search_name, under name: arg1
+		char * wished_directory = file_search_name(argv[1]);
+		if (wished_directory == nullptr) goto CASE_2_END; //if no such project exist, then...
+		CD_METHOD(wished_directory);
+CASE_2_END:
+		free(wished_directory);
+		return 0;
+	}
+
+	// if argc != 2 or 3, then just default to display
+	int value = display_projects();
+	if (value == -1) goto CASE_3_END;
+	printf("q exit\n");
+
+	int input = getchar();
+	if (input == 'Q' || input == 'q') return 0; 
+	// if anything but q is pressed, try to search for it in quixote_logs
+	// search by option
+	char * wished_directory = file_search_option(input - 48);
+	if (wished_directory == nullptr) goto CASE_3_END; // if option doesnt exist then...
+	CD_METHOD(wished_directory);
+CASE_3_END:
+	free(wished_directory);
+
 	return 0;
 }
