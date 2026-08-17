@@ -9,6 +9,7 @@
 #define CLEAN_KEYWORD "clean"
 
 
+// There's a bug in quixote file_write -> old quixote project works; this one does not
 // Writes to quixote_logs -> project_name;project_directory
 // entries sperated by a ';'
 void file_write(char * proj_name, char * directory) {

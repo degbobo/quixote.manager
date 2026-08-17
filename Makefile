@@ -1,5 +1,5 @@
 quixote:
-	gcc main.c methods.c -o quixote.exe
+	gcc main.c methods.c -o bin\quixote.exe
 clean:
 	rm quixote_logs
 peek:
