@@ -1,5 +1,5 @@
 ## Don Quixote <br> A simple Project Directory Manager
-<br>Project Pointer
+Project Pointer
 <br>Directory Pointer
 <br>Project Directory Manager
 <br>Project Manager
@@ -11,9 +11,9 @@
 - Know which specific project you'll take on? Type 'quixote project_name' to be redirected immediately
 
 ## A Terminal and quixote Go Hand in Hand
-<br>Terminals always open a few folders away from your projects.
+Terminals always open a few folders away from your projects.
 <br>'quixote' allows you to be only one command away from diving into work
 
 ## Why Name it "Don Quixote"?
-<br>I'm a fan of the book, it's a lot of fun!
+I'm a fan of the book, it's a lot of fun!
 <br>It's nice for projects to have names.
