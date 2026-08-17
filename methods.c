@@ -4,7 +4,7 @@
 // could use #include <string.h>
 // but I wanted to practice writing myself
 
-#define FILE_PATH "C:\\Users\\duren\\projs\\Proj_Manager\\quixote_logs"
+#define FILE_PATH "C:\\Users\\duren\\projs\\Project_Manager\\data\\quixote_logs"
 
 // function to get the length of null-terminated string
 // doesn't account for null-terminate character
