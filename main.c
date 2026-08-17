@@ -7,6 +7,7 @@
 // i wanna characterize the project a bit more
 #define WRITE_KEYWORD "summon"
 #define CLEAN_KEYWORD "clean"
+#define PEEK_KEYWORD "peek"
 
 // Writes to quixote_logs -> project_name;project_directory
 // entries sperated by a ';'
@@ -144,6 +145,11 @@ int main(int argc, char * argv[]) {
 		if (string_eqv(argv[1], CLEAN_KEYWORD) == 1) {
 			// THEN DELETE THE FILE
 			remove(FILE_PATH);   // allegedlly the syntax to delete a file
+			return 0;
+		}
+		else if (string_eqv(argv[1], PEEK_KEYWORD) == 1) {
+			//then ONLY print the project list
+			display_projects();
 			return 0;
 		}
 		// then we search quixote_logs using file_search_name, under name: arg1
