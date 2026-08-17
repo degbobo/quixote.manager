@@ -4,6 +4,8 @@
 #define MODE_APPEND 'a'
 #define MODE_READ 'r'
 
+#define FILE_PATH "C:\\Users\\duren\\projs\\Proj_Manager\\quixote_logs"
+
 int string_len(char * contents);
 int string_eqv(char * one, char * other);
 

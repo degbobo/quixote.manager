@@ -4,6 +4,8 @@
 // could use #include <string.h>
 // but I wanted to practice writing myself
 
+#define FILE_PATH "C:\\Users\\duren\\projs\\Proj_Manager\\quixote_logs"
+
 // function to get the length of null-terminated string
 // doesn't account for null-terminate character
 int string_len(char * contents) {
@@ -47,7 +49,7 @@ int fstring_len(FILE * position, char stopper) {
 char* fstring_build(FILE * position, char stopper) {
 	int bookmark = ftell(position);
 	int len = fstring_len(position, stopper);
-	if (len == 0) return nullptr); // then there is no string to build!
+	if (len == 0) return nullptr; // then there is no string to build!
 	
 	char * string = malloc(len + 1);
 	char read = fgetc(position);
@@ -69,7 +71,7 @@ void fstring_gone(char * string) {
 
 
 #define MODE_READ 'r'
-#define MODE_APPEND'a'
+#define MODE_APPEND 'a'
 // Function opens a file in a specific mode
 // MODE_READ and MODE_APPEND select with what permissions to open the file
 FILE* GET_FILE(char mode) {

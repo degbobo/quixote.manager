@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <methods.h>
+#include "methods.h"
 #include <direct.h>
 #include <windows.h>
 
-#include WRITE_KEYWORD "summon"
+#define WRITE_KEYWORD "summon"
 
-#define FILE_PATH "C:\\Users\\duren\\projs\\Proj_Manager\\quixote_logs"
 
 // Writes to quixote_logs -> project_name;project_directory
 // entries sperated by a ';'
@@ -116,7 +115,7 @@ int QUIXOTE_METHOD(char * directory) {
 		NULL,
 		directory,
 		&si,
-		&pi,
+		&pi
 	);
 
 	if (!success) return -1;
@@ -143,7 +142,7 @@ int main(int argc, char * argv[]) {
 		// then we search quixote_logs using file_search_name, under name: arg1
 		char * wished_directory = file_search_name(argv[1]);
 		if (wished_directory == nullptr) goto CASE_2_END; //if no such project exist, then...
-		CD_METHOD(wished_directory);
+		QUIXOTE_METHOD(wished_directory);
 CASE_2_END:
 		free(wished_directory);
 		return 0;
@@ -160,7 +159,7 @@ CASE_2_END:
 	// search by option
 	char * wished_directory = file_search_option(input - 48);
 	if (wished_directory == nullptr) goto CASE_3_END; // if option doesnt exist then...
-	CD_METHOD(wished_directory);
+	QUIXOTE_METHOD(wished_directory);
 CASE_3_END:
 	free(wished_directory);
 
