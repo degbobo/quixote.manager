@@ -1,6 +1,9 @@
 // needs <stdio.h>
 // needs <stdlib.h>
 
+#define MODE_APPEND 'a'
+#define MODE_READ 'r'
+
 int string_len(char * contents);
 int string_eqv(char * one, char * other);
 
