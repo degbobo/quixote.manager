@@ -63,7 +63,7 @@ char* fstring_build(FILE * position, char stopper) {
 }
 
 // for naming convention
-char* fstring_gone(char * string) {
+void fstring_gone(char * string) {
 	free(string);
 }
 
