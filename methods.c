@@ -92,6 +92,8 @@ END:
 
 // Function moves the file cursor until character 'hint' is found
 // Places the file cursor after the 'hint'
+// return 0 -> success
+// return 1 -> no such character found
 int FCURSOR_FIND(FILE * cursor, char hint) {
 	char read;
 FCUR_FIND_SPECIFIC:
@@ -104,6 +106,8 @@ FCUR_FIND_SPECIFIC:
 // Moves the file cursor until newline character is found
 // Places the file cursor after newline character
 // Function exists for sake of language
+// return 0 -> success
+// return -1 -> no newline found
 int FCURSOR_NEXTLINE(FILE * cursor) {
 	char read;
 FCUR_FIND_NEXTLINE:
