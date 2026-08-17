@@ -68,3 +68,47 @@ char* fstring_gone(char * string) {
 }
 
 
+#define MODE_READ 'r'
+#define MODE_APPEND'a'
+// Function opens a file in a specific mode
+// MODE_READ and MODE_APPEND select with what permissions to open the file
+FILE* GET_FILE(char mode) {
+	FILE * file;
+	if (mode == MODE_READ) goto READ;
+	if (mode == MODE_APPEND) goto APPEND;
+APPEND: 
+	file = fopen(FILE_PATH, "a");
+	if (file == NULL) goto CREATE;
+	goto END;
+READ:
+	file = fopen(FILE_PATH, "r");
+	if (file == NULL) goto CREATE;
+	goto END;
+CREATE:
+	file = fopen(FILE_PATH, "w");
+END:
+	return file;
+}
+
+// Function moves the file cursor until character 'hint' is found
+// Places the file cursor after the 'hint'
+int FCURSOR_FIND(FILE * cursor, char hint) {
+	char read;
+FCUR_FIND_SPECIFIC:
+	read = fgetc(cursor);
+	if (read == hint) return 0;
+	if (read == EOF || read == NULL) return -1;
+	goto FCUR_FIND_SPECIFIC;
+}
+
+// Moves the file cursor until newline character is found
+// Places the file cursor after newline character
+// Function exists for sake of language
+int FCURSOR_NEXTLINE(FILE * cursor) {
+	char read;
+FCUR_FIND_NEXTLINE:
+	read = fgetc(cursor);
+	if (read == '\n') return 0;
+	if (read == EOF || read == NULL) return -1;
+	goto FCUR_FIND_NEXTLINE;
+}
