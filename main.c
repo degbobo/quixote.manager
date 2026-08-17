@@ -4,7 +4,9 @@
 #include <direct.h>
 #include <windows.h>
 
+// i wanna characterize the project a bit more
 #define WRITE_KEYWORD "summon"
+#define CLEAN_KEYWORD "clean"
 
 
 // Writes to quixote_logs -> project_name;project_directory
@@ -124,6 +126,7 @@ int QUIXOTE_METHOD(char * directory) {
 	return 0;
 }
 
+// a mess of if statements !!
 int main(int argc, char * argv[]) {
 	char current_dir[1024];
 	if (_getcwd(current_dir, sizeof(current_dir)) == NULL) return 0;
@@ -139,6 +142,10 @@ int main(int argc, char * argv[]) {
 		}
 	}
 	else if(argc == 2) { //if "quixote arg1"
+		if (string_eqv(argv[1], CLEAN_KEYWORD) == 1) {
+			// THEN DELETE THE FILE
+			return 0;
+		}
 		// then we search quixote_logs using file_search_name, under name: arg1
 		char * wished_directory = file_search_name(argv[1]);
 		if (wished_directory == nullptr) goto CASE_2_END; //if no such project exist, then...
