@@ -66,4 +66,65 @@ char* file_search_option(int option) {
 	return read;
 }
 
+// method to display all of the projects
+// changes to the visual/logic are made here
+// return 0 -> success
+// return -1 -> no such file / empty file
+int display_projects() {
+	FILE * file;
+	file = GET_FILE(MODE_READ);
+	if (fgetc(file) == EOF) return -1;
+	fseek(file, -1, SEEK_CUR);
+	printf(":: QUIXOTE ::\n");
+	int end_of_file = 1;
+	int count = 1;
+	while (end_of_file != -1) {
+		char * line_name = fstring_build(file, ';');
+		if (line_name == nullptr) break;
+		printf("%d. %s\n", count, line_name);
 
+		count++;
+		fstring_gone(line_name);
+		end_of_file = FCURSOR_NEXTLINE(file);
+	}
+	return 0;
+}
+
+// the method/logic behind spawning a new instance/going to project directory
+// return 0 -> success
+// return -1 -> fail
+int QUIXOTE_METHOD(char * directory) {
+	printf("...tell 'Dulcinea De Dulcinea of my deeds!\n", directory);
+
+	// windows.h code; to start new process
+	STARTUPINFO si;
+	PROCESS_INFORMATION pi;
+
+	ZeroMemory(&si, sizeof(si));
+	si.cb = sizeof(si);
+	ZeroMemory(&pi, sizeof(pi));
+
+	char command[] = "C:\\Program Files\\Git\\git-bash.exe"; // creating a new instance of git-bash
+	
+	BOOL success = CreateProcess(
+		NULL,
+		command,
+		NULL,
+		NULL,
+		FALSE,
+		CREATE_NEW_CONSOLE,
+		NULL,
+		directory,
+		&si,
+		&pi,
+	);
+
+	if (!success) return -1;
+	CloseHandle(pi.hProcess);
+	CloseHandle(pi.hThread);
+	return 0;
+}
+
+int main(void) {
+	return 0;
+}
